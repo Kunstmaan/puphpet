@@ -232,6 +232,7 @@ php:
             - imagick
             - gd
             - memcached
+            - xml
         pear: {  }
         pecl:
             - pecl_http
@@ -400,9 +401,13 @@ rabbitmq:
 elastic_search:
     install: '1'
     settings:
-        version: 1.4.1
+        version: 2.3.2
         java_install: true
-    instances: {  }
+        manage_repo: true
+        repo_version: '2.x'
+    instances:
+        esi_x28osjbes6hv:
+            name: es-01
 solr:
     install: '0'
     settings:
