@@ -52,3 +52,5 @@ alias rm='rm -i'
 alias mv='mv -iv'
 alias grep='grep --color=auto -in'
 alias ..='cd ..'
+alias sf="php app/console"
+alias sf:dsu="php app/console doctrine:schema:update --force"
