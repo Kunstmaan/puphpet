@@ -121,10 +121,16 @@ define puphpet::php::pecl (
       service_autorestart => $service_autorestart,
     }
 
+    if $pecl_name =~ /(raphf|propro|pecl_http)-[\d\.]+/ {
+      $pecl_so_name= $1
+    } else {
+      $pecl_so_name = $pecl_name
+    }
+
     if ! defined(Puphpet::Php::Ini[$pecl_name]) {
       puphpet::php::ini { $pecl_name:
         entry        => 'MODULE/extension',
-        value        => "${pecl_name}.so",
+        value        => "${pecl_so_name}.so",
         php_version  => $puphpet::php::settings::version,
         webserver    => $puphpet::php::settings::service,
         ini_filename => "${pecl_name}.ini",

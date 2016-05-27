@@ -235,7 +235,9 @@ php:
             - xml
         pear: {  }
         pecl:
-            - pecl_http
+            - raphf-1.1.2
+            - propro-1.0.2
+            - pecl_http-2.5.6
             - apcu
     ini:
         display_errors: 'On'
