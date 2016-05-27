@@ -122,9 +122,19 @@ define puphpet::php::pecl (
     }
 
     if $pecl_name =~ /(raphf|propro|pecl_http)-[\d\.]+/ {
-      $pecl_so_name= $1
+      case $1 {
+        'pecl_http': {
+          $pecl_so_name = 'http'
+          $file_ini_name = 'zzzz_pecl_http'
+        }
+        default: {
+          $pecl_so_name = $1
+          $file_ini_name = $pecl_name
+        }
+      }
     } else {
       $pecl_so_name = $pecl_name
+      $file_ini_name = $pecl_name
     }
 
     if ! defined(Puphpet::Php::Ini[$pecl_name]) {
@@ -133,7 +143,7 @@ define puphpet::php::pecl (
         value        => "${pecl_so_name}.so",
         php_version  => $puphpet::php::settings::version,
         webserver    => $puphpet::php::settings::service,
-        ini_filename => "${pecl_name}.ini",
+        ini_filename => "${file_ini_name}.ini",
       }
     }
   }
