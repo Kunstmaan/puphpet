@@ -31,4 +31,4 @@ if [[ ! -f /.puphpet-stuff/install-puppet ]]; then
     touch /.puphpet-stuff/install-puppet
 fi
 
-/opt/puppetlabs/puppet/bin/gem install deep_merge activesupport vine --no-ri --no-rdoc
+/opt/puppetlabs/puppet/bin/gem install deep_merge activesupport:'< 5' vine --no-ri --no-rdoc
